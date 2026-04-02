@@ -23,6 +23,26 @@ object Main extends App {
   val outputPath4 = "/out4"
   val outputPath5 = "/out5"
 
+// val spark = SparkSession.builder
+//   .appName("SparkApp2")
+//   .master("yarn")
+//   .config("spark.hadoop.fs.defaultFS", "hdfs://clu01.softnet.tuc.gr:8020")
+//   .config("spark.hadoop.yarn.resourcemanager.address", "http://clu01.softnet.tuc.gr:8189")
+//   .config("spark.hadoop.yarn.application.classpath", "$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,$HADOOP_MAPRED_HOME/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*")
+//   .getOrCreate()
+
+// val hdfsURI = "hdfs://clu01.softnet.tuc.gr:8020"
+// FileSystem.setDefaultUri(spark.sparkContext.hadoopConfiguration, hdfsURI)
+// val hdfs = FileSystem.get(spark.sparkContext.hadoopConfiguration)
+
+// val input = "/user/chrisa/nmea_aegean/nmea_aegean.logs"
+
+// val outputPath1 = "/user/fp21/out1"
+// val outputPath2 = "/user/fp21/out2"
+// val outputPath3 = "/user/fp21/out3"
+// val outputPath4 = "/user/fp21/out4"
+// val outputPath5 = "/user/fp21/out5"
+
   val newNames = Seq("date", "station", "vesselID", "longitude", "latitude" , "SOG" , "COG" , "heading" , "status")
 
   val df = spark.read.option("header" , "true").csv(input).toDF(newNames: _*) // read the txt as a dataframe using read.csv and dropping the header
